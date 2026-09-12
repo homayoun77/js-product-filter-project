@@ -1,6 +1,7 @@
 const searchInput = document.getElementById("search-input")
 const products = document.querySelectorAll(".product-item")
 const buttons = document.querySelectorAll(".filter")
+const priceButton = document.getElementById("search-price").querySelector("button")
 
 const changeClass = (filter) => {
     buttons.forEach(button => {
@@ -46,7 +47,22 @@ const filterHandler = (event) => {
     })
 }
 
+const searchPriceHandler = (event) => {
+    const searchValue = +event.target.parentElement.children[0].value
+    
+    products.forEach(product => {
+        const productPrice = product.children[2].innerText
+        const price = +productPrice.split(" ")[1]
+        if(!searchValue){
+            product.style.display = "block"
+        }else{
+            searchValue === price ? product.style.display = "block" : product.style.display = "none"
+        }
+    })
+}
+
 searchInput.addEventListener("keyup", searchHandler)
 buttons.forEach(button => {
     button.addEventListener("click", filterHandler)
 })
+priceButton.addEventListener("click" , searchPriceHandler)
