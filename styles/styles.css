@@ -38,6 +38,11 @@ button{
     font-size: 1.1rem;
     cursor: pointer;
 }
+.selected{
+    background-color: #f6f6f6;
+    color: #220efa;
+    border: #220efa 2px solid;
+}
 #products{
     display: flex;
     flex-wrap: wrap;
